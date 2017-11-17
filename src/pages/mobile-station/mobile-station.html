@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Móvel</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item text-wrap>
+      <ion-label>
+        <h2>Plataforma móvel</h2>
+        <p>Localizada onde o judas perdeu as botas</p>
+      </ion-label>
+      <ion-toggle [(ngModel)]="platform.enabled" item-end></ion-toggle>
+    </ion-item>
+
+    
+  <ion-list-header>
+      Sensores disponíveis
+    </ion-list-header>
+
+    <ion-item *ngFor="let sensor of platform.sensors">
+      <ion-label>{{ sensor.name }}</ion-label>
+      <ion-note item-end>{{ sensor.value }}</ion-note>
+      <ion-toggle [(ngModel)]="sensor.enabled"></ion-toggle>
+    </ion-item>
+
+  </ion-list>
+</ion-content>
