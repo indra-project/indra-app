@@ -1,40 +1,37 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
-
-import { FixedStationPage } from '../pages/fixed-station/fixed-station';
-import { MobileStationPage } from '../pages/mobile-station/mobile-station';
-import { AboutPage } from '../pages/about/about';
-import { TabsPage } from '../pages/tabs/tabs';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { MyApp } from './app.component';
+
+import { StationsPageModule } from '../pages/stations/stations.module';
+import { StationPageModule } from '../pages/station/station.module';
+import { SensorPageModule } from '../pages/sensor/sensor.module';
+
+import { PipesModule } from '../pipes/pipes.module';
+
 @NgModule({
   declarations: [
-    MyApp,
-    AboutPage,
-    FixedStationPage,
-    MobileStationPage,
-    TabsPage
+    MyApp
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    StationsPageModule,
+    StationPageModule,
+    SensorPageModule,
+    PipesModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    AboutPage,
-    FixedStationPage,
-    MobileStationPage,
-    TabsPage
+    MyApp
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }

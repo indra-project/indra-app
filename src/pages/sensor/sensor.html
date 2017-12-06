@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ sensor.name }}</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="save()">Ok</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item text-wrap>
+      <ion-label>
+        <h2>{{ sensor.name }}</h2>
+      </ion-label>
+      <ion-note item-end [color]="sensor.active == 1 ? 'primary' : 'danger'">{{ sensor.active == 1 ? 'Ativo' : 'Initivo' }}</ion-note>
+      <ion-toggle [(ngModel)]="sensor.active" item-end></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <h2>Ultima Medida</h2>
+      </ion-label>
+      <ion-note item-end color="primary">{{ sensor.value }} {{ sensor.unit }}</ion-note>
+    </ion-item>
+    <ion-item text-wrap>
+      <ion-label>Temporizador</ion-label>
+      <ion-input type="number" [(ngModel)]="sensor.intervals"></ion-input>
+      <ion-note item-end color="primary"> {{ sensor.unit }}</ion-note>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
