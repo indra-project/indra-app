@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { StationsPageModule } from '../pages/stations/stations.module';
 import { StationPageModule } from '../pages/station/station.module';
 import { SensorPageModule } from '../pages/sensor/sensor.module';
+import { HistoryPageModule } from '../pages/history/history.module';
 
 import { PipesModule } from '../pipes/pipes.module';
 
@@ -22,6 +23,7 @@ import { PipesModule } from '../pipes/pipes.module';
     StationsPageModule,
     StationPageModule,
     SensorPageModule,
+    HistoryPageModule,
     PipesModule,
   ],
   bootstrap: [IonicApp],

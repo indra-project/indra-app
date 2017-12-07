@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { SensorPage } from './../sensor/sensor';
+import { HistoryPage } from './../history/history';
 
 @IonicPage()
 @Component({
@@ -29,7 +30,11 @@ export class StationPage {
   }
 
   openSensor(sensor) {
-    this.navCtrl.push(SensorPage, { sensor })
+    this.navCtrl.push(SensorPage, { sensor });
+  }
+
+  openHistory(station) {
+    this.navCtrl.push(HistoryPage, { station });
   }
 
 }

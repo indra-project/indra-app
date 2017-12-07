@@ -1,6 +1,9 @@
 <ion-header>
   <ion-navbar>
     <ion-title>{{ station.name }}</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="openHistory(station)">Histórico</button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 

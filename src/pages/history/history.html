@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Histórico {{ station.name }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Inicio</ion-label>
+      <ion-input type="datetime"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Fim</ion-label>
+      <ion-input type="datetime"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Sensor</ion-label>
+      <ion-select>
+        <ion-option value="nes">Fluxo de água</ion-option>
+        <ion-option value="n64">Temperatura</ion-option>
+        <ion-option value="ps">Umidade</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-8>Data</ion-col>
+      <ion-col col-4>Medida</ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngFor="let sensor of station.sensors">
+    <ion-row align-items-center>
+      <ion-col col-12>{{ sensor.name }}</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let measure of [1,2,3,4,5]" align-items-center>
+      <ion-col col-8>{{ measure}}/12 15:{{ measure + 1 }}</ion-col>
+      <ion-col col-4>{{ sensor.value + measure }} {{ sensor.unit }}</ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
