@@ -38,6 +38,17 @@ export class StationsPage {
         "created_at": null,
         "updated_at": null,
         "value": 100
+      },{
+        "id": 10,
+        "name": "Temperatura",
+        "type": "TEMPERATURE",
+        "station_id": 1,
+        "active": 1,
+        "intervals": 10,
+        "unit": "° C",
+        "created_at": null,
+        "updated_at": null,
+        "value": 32
       },
       {
         "id": 9,

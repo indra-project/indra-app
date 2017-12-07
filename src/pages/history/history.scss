@@ -1,3 +1,18 @@
 page-history {
 
+    $page-history-table-border-color: lightGrey;
+
+    .row {
+
+        &:first-child {            
+            border-top: 1px solid $page-history-table-border-color;
+        }
+
+        border-bottom: 1px solid $page-history-table-border-color;
+        border-left: 1px solid $page-history-table-border-color;
+
+        .col {
+            border-right: 1px solid $page-history-table-border-color;
+        }
+    }
 }
