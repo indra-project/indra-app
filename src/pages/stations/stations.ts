@@ -11,7 +11,7 @@ import { StationsProvider } from './../../providers/station/station';
 })
 export class StationsPage {
 
-  type: 'all' | 'FIX' | 'MOB' = 'all';
+  type: '*' | 'FIX' | 'MOB' = '*';
 
   iconTypes = {
     'FIX': 'locate',

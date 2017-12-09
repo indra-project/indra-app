@@ -5,7 +5,7 @@
   </ion-navbar>
   <ion-toolbar>
     <ion-segment [(ngModel)]="type">
-      <ion-segment-button value="all">
+      <ion-segment-button value="*">
         Todas
       </ion-segment-button>
       <ion-segment-button value="FIX">
@@ -25,7 +25,7 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ion-list>
-    <button ion-item *ngFor="let station of stations | byType:type" (click)="goToStation(station)">
+    <button ion-item *ngFor="let station of stations | filter : { type: type }" (click)="goToStation(station)">
       <ion-icon [name]="iconTypes[station.type]" item-left large [color]="station.active == 1 ? 'secondary' : 'danger'"></ion-icon>
       <h2>{{ station.name }}</h2>
       <p>{{ station.mac_address }}</p>
