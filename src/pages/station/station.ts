@@ -12,15 +12,6 @@ import { HistoryPage } from './../history/history';
 export class StationPage {
 
   station: any = {};
-  sensorType = {
-    "WATER_FLUX": "fluxo de água",
-    "AIR_HUMIDITY": "umidade do ar",
-    "SOIL_MOISTURE": "umidade do solo",
-    "VIBRATION": "vibração",
-    "FIRE_FLAME": "chamas",
-    "TEMPERATURE": "temperatura",
-    "PRESENCE_SENSOR": "presença",
-  };
 
   constructor(
     public navCtrl: NavController,

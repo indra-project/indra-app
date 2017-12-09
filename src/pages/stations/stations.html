@@ -7,15 +7,12 @@
     <ion-segment [(ngModel)]="type">
       <ion-segment-button value="all">
         Todas
-        <!--<ion-icon name="list"></ion-icon>-->
       </ion-segment-button>
       <ion-segment-button value="FIX">
         Fixa
-        <!--<ion-icon name="bookmark"></ion-icon>-->
       </ion-segment-button>
       <ion-segment-button value="MOB">
         Móvel
-        <!--<ion-icon name="bookmark"></ion-icon>-->
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
@@ -24,14 +21,15 @@
 
 
 <ion-content>
+  <ion-refresher (ionRefresh)="onRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-list>
     <button ion-item *ngFor="let station of stations | byType:type" (click)="goToStation(station)">
       <ion-icon [name]="iconTypes[station.type]" item-left large [color]="station.active == 1 ? 'secondary' : 'danger'"></ion-icon>
       <h2>{{ station.name }}</h2>
-      <!--<p>{{ station.description }}</p>
-      <ion-note>{{ station.mac_address }}</ion-note>-->
       <p>{{ station.mac_address }}</p>
-      <ion-icon name="power" [color]="station.active == 1 ? 'secondary' : 'danger'" item-end></ion-icon>
+      <!--<ion-icon name="power" [color]="station.active == 1 ? 'secondary' : 'danger'" item-end></ion-icon>-->
     </button>
   </ion-list>
 </ion-content>
