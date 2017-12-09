@@ -1,8 +1,14 @@
 import { NgModule } from '@angular/core';
 import { ByTypePipe } from './by-type/by-type';
+import { FilterPipe } from './filter/filter';
+
 @NgModule({
-	declarations: [ByTypePipe],
+	declarations: [
+		ByTypePipe,
+		FilterPipe],
 	imports: [],
-	exports: [ByTypePipe]
+	exports: [
+		ByTypePipe,
+		FilterPipe]
 })
-export class PipesModule {}
+export class PipesModule { }
