@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 
 import { StationsProvider } from './../../providers/station/station';
+import { HistoryFilterPage } from './../history-filter/history-filter';
 
 const allSensors = { id: '*', name: 'Todos' };
 
@@ -22,16 +23,10 @@ export class HistoryPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public stationsProvider: StationsProvider
+    public stationsProvider: StationsProvider,
+    public modalCtrl: ModalController
   ) {
     this.station = navParams.data.station;
-
-    stationsProvider.getHistory(this.station.id)
-      .subscribe(history => {
-        this.history = history;
-        this.sensorOptions = [allSensors, ...history];
-      });
-
 
     let startDate: any = new Date();
     startDate.setHours(0, 0, 0, 0);
@@ -43,6 +38,30 @@ export class HistoryPage {
 
     let sensor = allSensors.id;
     this.filter = { startDate, endDate, sensor };
+
+    this.loadData();
+  }
+
+  loadData() {
+    this.stationsProvider.getHistory(this.station.mac_address, this.filter)
+      .subscribe(history => {
+        this.history = history;
+        this.sensorOptions = [allSensors, ...history];
+      });
+  }
+
+  openFilterHistory() {
+
+    let { sensorOptions, filter } = this;
+
+    let modal = this.modalCtrl.create(HistoryFilterPage, { filter, sensorOptions });
+
+    modal.onWillDismiss(filter => {
+      this.filter = filter;
+      this.loadData()
+    });
+
+    modal.present();
   }
 }
 

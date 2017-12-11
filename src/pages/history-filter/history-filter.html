@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Filtrar Histórico</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="submitFilter(filter)">
+        Ok
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Inicio</ion-label>
+      <ion-datetime [(ngModel)]="filter.startDate" displayFormat="MM/DD/YYYY HH:mm"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Fim</ion-label>
+      <ion-datetime [(ngModel)]="filter.endDate" displayFormat="MM/DD/YYYY HH:mm"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Sensor</ion-label>
+      <ion-select [(ngModel)]="filter.sensor">
+        <ion-option *ngFor="let sensor of sensorOptions" value="{{ sensor.id }}">{{ sensor.name }}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ion-content>

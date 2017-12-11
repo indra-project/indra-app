@@ -11,6 +11,7 @@ import { StationsPageModule } from '../pages/stations/stations.module';
 import { StationPageModule } from '../pages/station/station.module';
 import { SensorPageModule } from '../pages/sensor/sensor.module';
 import { HistoryPageModule } from '../pages/history/history.module';
+import { HistoryFilterPageModule } from '../pages/history-filter/history-filter.module';
 
 import { PipesModule } from '../pipes/pipes.module';
 import { ProvidersModule } from '../providers/providers.module';
@@ -28,6 +29,7 @@ import { ProvidersModule } from '../providers/providers.module';
     StationPageModule,
     SensorPageModule,
     HistoryPageModule,
+    HistoryFilterPageModule,
     PipesModule,
   ],
   bootstrap: [IonicApp],
