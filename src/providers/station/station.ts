@@ -1,21 +1,24 @@
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
+
+const API_BASE_URL = 'http://projetoindra.ga/public/index.php/api/v1';
 
 @Injectable()
 export class StationsProvider {
 
   constructor(
-    public http: Http
+    public http: HttpClient
   ) { }
 
   private stationSubject = new BehaviorSubject<any[]>([]);
 
   getStations() {
 
-    setTimeout(() => {
-      this.stationSubject.next(STATIONS_CACHE);
-    });
+    this.http.get<any>(`${API_BASE_URL}/stations`)
+      .subscribe(res => {
+        this.stationSubject.next(res.data);
+      });
 
     return this.stationSubject;
   }
