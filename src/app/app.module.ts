@@ -1,5 +1,5 @@
 import { NgModule, ErrorHandler } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -16,13 +16,14 @@ import { HistoryFilterPageModule } from '../pages/history-filter/history-filter.
 import { PipesModule } from '../pipes/pipes.module';
 import { ProvidersModule } from '../providers/providers.module';
 
+
 @NgModule({
   declarations: [
     MyApp
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
-    HttpModule,
     IonicModule.forRoot(MyApp),
     ProvidersModule,
     StationsPageModule,
