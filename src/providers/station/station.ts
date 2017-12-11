@@ -20,7 +20,7 @@ export class StationsProvider {
     return this.stationSubject;
   }
 
-  getHistory(station_id) {
+  getHistory(mac_address, filter: { startDate: string, endDate: string, sensor: string }) {
     return new Observable<any[]>(observer => {
       setTimeout(() => {
         observer.next(HISTORY_CACHE);
