@@ -23,7 +23,7 @@
       Sensores disponíveis
     </ion-list-header>
 
-    <button ion-item *ngFor="let sensor of station.sensors" (click)="openSensor(sensor)">
+    <button ion-item *ngFor="let sensor of sensors" (click)="openSensor(sensor)">
       <h2>{{ sensor.name }}</h2>
       <p>Temporizado em {{ sensor.intervals }} segundos</p>      
       <ion-note item-end [color]="sensor.active == 1 ? 'primary' : 'danger'">{{ sensor.value }} {{ sensor.unit }}</ion-note>

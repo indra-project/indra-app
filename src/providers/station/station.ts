@@ -16,11 +16,15 @@ export class StationsProvider {
   getStations() {
 
     this.http.get<any>(`${API_BASE_URL}/stations`)
-      .subscribe(res => {
-        this.stationSubject.next(res.data);
+      .subscribe(data => {
+        this.stationSubject.next(data);
       });
 
     return this.stationSubject;
+  }
+
+  getSensors(mac_address) {
+    return this.http.get<any>(`${API_BASE_URL}/stations/${mac_address}/sensors`);
   }
 
   getHistory(mac_address, filter: { startDate: string, endDate: string, sensor: string }) {
