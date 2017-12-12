@@ -41,12 +41,9 @@ export class StationsProvider {
     return this.http.post<any>(`${API_BASE_URL}/stations/${mac_address}/sensors/${type}`, properties);
   }
 
-  getHistory(mac_address, filter: { startDate: string, endDate: string, sensor: string }) {
-    return new Observable<any[]>(observer => {
-      setTimeout(() => {
-        observer.next(HISTORY_CACHE);
-      });
-    });
+  getHistory(mac_address, filter: { startDate: string, endDate: string }) {
+    return this.http.get<any>(`${API_BASE_URL}/stations/${mac_address}/sensor-data?startDate=${filter.startDate}&endDate=${filter.endDate}`)
+      .map(sensors => sensors.filter(sensor => sensor.data && sensor.data.length > 0));
   }
 }
 
