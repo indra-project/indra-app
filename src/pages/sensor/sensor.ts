@@ -26,11 +26,11 @@ export class SensorPage {
     this.station = navParams.data.station;
   }
 
-  onChangeSensorStatus() {
+  onChangeSensorStatus(status) {
     this.isSaving = true;
 
     this.stationsProvider.setSensorProperties(this.station.mac_address, this.sensor.type, {
-      active: this.sensor.status === true ? 1 : 0
+      active: status === true ? 1 : 0
     }).subscribe(sensor => {
       this.isSaving = false;
     }, err => {

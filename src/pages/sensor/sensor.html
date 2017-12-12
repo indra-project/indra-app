@@ -14,7 +14,7 @@
         <h2>{{ sensor.name }}</h2>
       </ion-label>
       <ion-note item-end [color]="sensor.active == 1 ? 'primary' : 'danger'">{{ sensor.active == 1 ? 'Ativo' : 'Initivo' }}</ion-note>
-      <ion-toggle [(ngModel)]="sensor.active" (ionChange)="onChangeSensorStatus()" [disabled]="isSaving" item-end></ion-toggle>
+      <ion-toggle [(ngModel)]="sensor.active" (ionChange)="onChangeSensorStatus(sensor.active)" [disabled]="isSaving" item-end></ion-toggle>
     </ion-item>
 
     <ion-item>
