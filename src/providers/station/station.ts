@@ -37,6 +37,10 @@ export class StationsProvider {
     return this.http.get<any>(`${API_BASE_URL}/stations/${mac_address}/sensors`);
   }
 
+  setSensorProperties(mac_address, type, properties: any) {
+    return this.http.post<any>(`${API_BASE_URL}/stations/${mac_address}/sensors/${type}`, properties);
+  }
+
   getHistory(mac_address, filter: { startDate: string, endDate: string, sensor: string }) {
     return new Observable<any[]>(observer => {
       setTimeout(() => {

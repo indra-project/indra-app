@@ -43,7 +43,7 @@ export class StationPage {
   }
 
   openSensor(sensor) {
-    this.navCtrl.push(SensorPage, { sensor });
+    this.navCtrl.push(SensorPage, { sensor, station: this.station });
   }
 
   openHistory(station) {
