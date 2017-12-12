@@ -15,17 +15,17 @@
         <h3>{{ station.description }}</h3>
         <p>{{ station.mac_address }}</p>
       </ion-label>
-      <ion-toggle [(ngModel)]="station.active" item-end></ion-toggle>
+      <ion-toggle [(ngModel)]="station.active" (ionChange)="onChangeStationStatus(station.active)" [disabled]="isSaving" item-end></ion-toggle>
     </ion-item>
 
-    
-  <ion-list-header>
+
+    <ion-list-header>
       Sensores disponíveis
     </ion-list-header>
 
     <button ion-item *ngFor="let sensor of sensors" (click)="openSensor(sensor)">
       <h2>{{ sensor.name }}</h2>
-      <p>Temporizado em {{ sensor.intervals }} segundos</p>      
+      <p>Temporizado em {{ sensor.intervals }} segundos</p>
       <ion-note item-end [color]="sensor.active == 1 ? 'primary' : 'danger'">{{ sensor.value }} {{ sensor.unit }}</ion-note>
     </button>
 

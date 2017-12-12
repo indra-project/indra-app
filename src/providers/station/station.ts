@@ -23,6 +23,16 @@ export class StationsProvider {
     return this.stationSubject;
   }
 
+  setStationStatus(id, status: 1 | 0) {
+    let saveRequest = this.http.post<any>(`${API_BASE_URL}/stations/${id}`, { active: status });
+
+    saveRequest.subscribe(data => {
+      this.getStations();
+    });
+
+    return saveRequest;
+  }
+
   getSensors(mac_address) {
     return this.http.get<any>(`${API_BASE_URL}/stations/${mac_address}/sensors`);
   }

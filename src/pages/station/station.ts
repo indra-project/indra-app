@@ -15,6 +15,7 @@ export class StationPage {
 
   station: any = {};
   sensors: any[] = [];
+  isSaving: boolean = false;
 
   constructor(
     public navCtrl: NavController,
@@ -26,6 +27,18 @@ export class StationPage {
     stationsProvider.getSensors(this.station.mac_address)
       .subscribe(sensors => {
         this.sensors = sensors;
+      });
+  }
+
+  onChangeStationStatus(status) {
+    this.isSaving = true;
+
+    this.stationsProvider.setStationStatus(this.station.id, status === true ? 1 : 0)
+      .subscribe(station => {
+        this.station = station;
+        this.isSaving = false;
+      }, err => {
+        this.isSaving = false;
       });
   }
 
