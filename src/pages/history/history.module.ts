@@ -4,6 +4,8 @@ import { HistoryPage } from './history';
 
 import { PipesModule } from './../../pipes/pipes.module';
 
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     HistoryPage,
@@ -11,6 +13,7 @@ import { PipesModule } from './../../pipes/pipes.module';
   imports: [
     IonicPageModule.forChild(HistoryPage),
     PipesModule,
+    ChartsModule,
   ],
 })
 export class HistoryPageModule { }

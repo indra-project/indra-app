@@ -12,14 +12,57 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
+  <ion-card *ngFor="let sensor of history | filter: {id: filter.sensor}; let mode = 'chart' ">
+    <ion-card-header>
+      {{ sensor.name }} &mdash; <span ion-text color="primary">{{ sensor.unit }}</span>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-segment [(ngModel)]="sensor.mode" color="primary">
+        <ion-segment-button value="chart">
+          <ion-icon name="analytics"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="list">
+          <ion-icon name="list"></ion-icon>
+        </ion-segment-button>
+      </ion-segment>
+      <ion-grid>
+        <ion-row *ngIf="sensor.mode === 'chart'; else list">
+          <ion-col col-12>
+            <canvas *ngIf="sensor.data.length > 0"
+              baseChart width="400" height="400"
+              chartType="line"
+              [datasets]="getDatasets(sensor)"
+              [options]="lineChartOptions">
+            </canvas>
+          </ion-col>
+        </ion-row>
+        <ng-template #list>
+          <ion-row>
+            <ion-col col-6 text-center>
+              <b>Data</b>
+            </ion-col>
+            <ion-col col-6 text-center>
+              <b>Medida</b>
+            </ion-col>
+          </ion-row>
+
+          <ion-row *ngFor="let data of sensor.data">
+            <ion-col col-6 text-center>{{ data.date | date:'d/M/yy hh :mm' }}</ion-col>
+            <ion-col col-6 text-center>{{data.value }}
+              <span ion-text color="primary">{{ sensor.unit }}</span>
+            </ion-col>
+          </ion-row>
+        </ng-template>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <!--<ion-grid>
     <ng-container *ngFor="let sensor of history | filter: {id: filter.sensor} ">
       <ion-row>
         <ion-col col-12 text-center>
           <b>{{ sensor.name }}</b>
         </ion-col>
       </ion-row>
-
       <ion-row>
         <ion-col col-6 text-center>
           <b>Data</b>
@@ -36,5 +79,5 @@
         </ion-col>
       </ion-row>
     </ng-container>
-  </ion-grid>
+  </ion-grid>-->
 </ion-content>

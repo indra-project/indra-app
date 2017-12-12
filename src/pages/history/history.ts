@@ -28,11 +28,11 @@ export class HistoryPage {
   ) {
     this.station = navParams.data.station;
 
-    let startDate: any = new Date();
+    let startDate: any = new Date(2015, 12, 12);
     startDate.setHours(0, 0, 0, 0);
     startDate = startDate.toISOString();
 
-    let endDate: any = new Date;
+    let endDate: any = new Date(2018, 12, 12);
     endDate.setHours(23, 59, 59, 999);
     endDate = endDate.toISOString();
 
@@ -42,12 +42,50 @@ export class HistoryPage {
     this.loadData();
   }
 
+  lineChartOptions = {
+    responsive: true,
+    legend: {
+      display: false
+    },
+    tooltips: {
+      enabled: false
+    },
+    scales: {
+      xAxes: [{
+        type: 'time',
+        distribution: 'linear'
+      }]
+    }
+  };
+
   loadData() {
     this.stationsProvider.getHistory(this.station.mac_address, this.filter)
       .subscribe(history => {
-        this.history = history;
+        this.history = history.map(x => {
+          x.mode = 'chart';
+
+          return x;
+        });
         this.sensorOptions = [allSensors, ...history];
       });
+  }
+
+  getDatasets(sensor) {
+    return [{
+      label: `${sensor.name} [${sensor.unit}]`,
+      data: sensor.data.map((data, i) => {
+        return {
+          t: new Date(data.date),
+          y: Number(data.value)
+        };
+        // random number mocking
+        /*return {
+          t: new Date(2017, 12, i, i, Math.floor(Math.random() * 60), Math.floor(Math.random() * 60), 0),
+          y: Number(data.value) + (Math.random() * 10)
+        };
+        */
+      })
+    }];
   }
 
   openFilterHistory() {
@@ -62,6 +100,12 @@ export class HistoryPage {
     });
 
     modal.present();
+  }
+
+  getChartData(datas) {
+    return datas.map(data => {
+      return { x: new Date(data.date), y: data.value };
+    })
   }
 }
 

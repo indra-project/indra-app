@@ -16,6 +16,8 @@ import { HistoryFilterPageModule } from '../pages/history-filter/history-filter.
 import { PipesModule } from '../pipes/pipes.module';
 import { ProvidersModule } from '../providers/providers.module';
 
+import { ChartsModule } from 'ng2-charts';
+import 'chart.js';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { ProvidersModule } from '../providers/providers.module';
     HistoryPageModule,
     HistoryFilterPageModule,
     PipesModule,
+    ChartsModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
