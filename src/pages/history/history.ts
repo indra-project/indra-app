@@ -28,11 +28,13 @@ export class HistoryPage {
   ) {
     this.station = navParams.data.station;
 
-    let startDate: any = new Date(2015, 12, 12);
+    let startDate: any = new Date();
+
+    startDate.setDate(startDate.getDate() - 7);
     startDate.setHours(0, 0, 0, 0);
     startDate = startDate.toISOString();
 
-    let endDate: any = new Date(2018, 12, 12);
+    let endDate: any = new Date();
     endDate.setHours(23, 59, 59, 999);
     endDate = endDate.toISOString();
 
