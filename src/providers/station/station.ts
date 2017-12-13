@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 
-const API_BASE_URL = 'http://projetoindra.ga/public/index.php/api/v1';
+const API_BASE_URL = 'http://www.indra-project.tk/public/index.php/api/v1';
 
 @Injectable()
 export class StationsProvider {
